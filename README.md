@@ -11,13 +11,9 @@ Matcher sử dụng cấu trúc dữ liệu BallTree nên cần có các file Ba
 
 Các hàm trong namespace FastFeatureMatcher:
 - `std::vector<std::vector<float>> getDescriptors(cv::Mat image, const std::vector<cv::KeyPoint>&)` hàm nhận 1 ảnh và KeyPoints tương ứng khi được match bằng Fast Feature Detector của opencv. Trả về descriptors cho các KeyPoints là 16 điểm ảnh quanh mỗi keypoint.
-- ```
-std::vector<cv::DMatch> match(
-  cv::Mat img0, const std::vector<cv::KeyPoint>& kp0,
-  cv::Mat img1, const std::vector<cv::KeyPoint>& kp1,
-  float threshold = 5000
-);
-```
+-
+`std::vector<cv::DMatch> match(cv::Mat img0, const std::vector<cv::KeyPoint>& kp0, cv::Mat img1, const std::vector<cv::KeyPoint>& kp1, float threshold = 5000);
+`
 hàm nhận 2 ảnh và KeyPoints tương ứng với chúng và trả về matching giữa 2 tập KeyPoint. Hàm này đã
 gọi hàm `getDescriptors` nên không cần truyền thêm descriptors vào. Tham số `threshold` sử dụng để lọc
 ra các matching tốt, tức là ta sẽ giữ lại các matching có `SSD < threshold`. Truyền vào `-1` nếu như
